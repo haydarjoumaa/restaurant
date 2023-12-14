@@ -4,6 +4,7 @@ import Image from "next/image";
 import logoImg from "@/assets/logo.png";
 
 import style from "./header.module.css";
+import NavLink from "./NavLink";
 
 function PageHeader() {
   return (
@@ -15,10 +16,10 @@ function PageHeader() {
       <nav className={style.nav}>
         <ul>
           <li>
-            <Link href="/meals">Browse Meals</Link>
+            <NavLink route="/meals">meals</NavLink>
           </li>
           <li>
-            <Link href="/community">Browse Meals</Link>
+            <NavLink route="/community">community</NavLink>
           </li>
         </ul>
       </nav>
