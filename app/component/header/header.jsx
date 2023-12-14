@@ -1,16 +1,18 @@
 import Link from "next/link";
 import React from "react";
-
+import Image from "next/image";
 import logoImg from "@/assets/logo.png";
+
+import style from "./header.module.css";
 
 function PageHeader() {
   return (
-    <header>
-      <Link href="/">
-        <img src={logoImg.src} alt="a plate with food" />
+    <header className={style.header}>
+      <Link className={style.logo} href="/">
+        <Image src={logoImg} alt="a plate with food" priority />
         NextLevel Food
       </Link>
-      <nav>
+      <nav className={style.nav}>
         <ul>
           <li>
             <Link href="/meals">Browse Meals</Link>
