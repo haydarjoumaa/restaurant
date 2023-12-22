@@ -1,10 +1,17 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import classes from "./page.module.css";
 import Link from "next/link";
 import MealsGrid from "../component/meals/meals-grid";
+import { getAllData } from "@/lib/prisma";
+import Loading from "./loading-out";
 
-function MealsPage() {
+const Measls = async () => {
+  const mealsData = await getAllData();
+  return <MealsGrid meals={mealsData} />;
+};
+
+async function MealsPage() {
   return (
     <>
       <header className={classes.header}>
@@ -19,7 +26,9 @@ function MealsPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <MealsGrid meals={[]} />
+        <Suspense fallback={<Loading />}>
+          <Measls />
+        </Suspense>
       </main>
     </>
   );
